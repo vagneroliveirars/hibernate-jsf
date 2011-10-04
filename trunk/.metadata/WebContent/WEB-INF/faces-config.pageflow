@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13174303621910" configfile="/projetojsf/WebContent/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13174303621910" configfile="/projetojsf/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="olajsf" x="186" y="115" id="pf13175102421200" outlinks="pf13175102421201" path="/olajsf.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="mainpage" x="408" y="115" id="pf13175102421212" inlinks="pf13175102421201" path="/mainpage.jsp"/>
+  <links id="pf13175102421201" target="pf13175102421212" source="pf13175102421200" outcome="success"/>
+</pageflow:Pageflow>
