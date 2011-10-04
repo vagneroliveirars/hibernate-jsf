@@ -22,12 +22,14 @@ public class LoginHandler {
 		this.senha = senha;
 	}
 	
-	public void logar() {
+	public String logar() {
 		// codigo de teste, daos serao utilizados depois
 		if (login.equals("caelum") && senha.equals("123")) {
 			System.out.println("login com sucesso");
+			return "success";
 		} else {
 			System.out.println("login falhou");
+			return "failure";
 		}
 	}
 
