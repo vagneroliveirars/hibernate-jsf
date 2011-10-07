@@ -37,7 +37,16 @@
 							<h:outputText value="Descricao"/>
 						</f:facet>
 						<h:outputText value="#{f.descricao}"/>
-					</h:column>											
+					</h:column>	
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Alterar"/>
+						</f:facet>
+						<h:commandLink actionListener="#{FornecedorHandler.escolheFornecedor}">
+							<h:outputText value="(alterar)"/>
+							<f:param id="editId" name="id" value="#{f.id}"/>
+						</h:commandLink>
+					</h:column>										
 				</h:dataTable>
 			</h:form>	
 		</f:view>
