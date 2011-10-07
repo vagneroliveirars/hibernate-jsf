@@ -27,13 +27,14 @@ public class FornecedorHandler {
 		return count;
 	}
 	
-	public void salva() {
+	public String salva() {
 		System.out.println("Adicionando: " + fornecedor.getNome());
 		if (fornecedor.getId() == null) {
 			this.fornecedor.setId(++count);
 			this.fornecedores.add(fornecedor);
 		}
 		this.fornecedor = new Fornecedor();
+		return null;
 	}
 	
 	public void escolheFornecedor(ActionEvent event) {
