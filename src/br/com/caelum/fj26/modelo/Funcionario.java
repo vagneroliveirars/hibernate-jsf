@@ -7,6 +7,7 @@ public class Funcionario {
 	private String usuario;
 	private String senha;
 	private String email;
+	private Integer idade;
 
 	public Long getId() {
 		return id;
@@ -46,6 +47,14 @@ public class Funcionario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
 	}
 
 }

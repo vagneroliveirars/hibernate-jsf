@@ -3,6 +3,9 @@ package br.com.caelum.fj26;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 
@@ -77,6 +80,15 @@ public class FuncionarioHandler {
 		System.out.println("Seleciona um funcionario para visualizacao");
 		Funcionario f = (Funcionario) dataModel.getRowData();
 		this.funcionario = f;
+	}
+	
+	public void validaEmail(FacesContext context, UIComponent validar, Object valor) {
+		String email = (String) valor;
+		if (!email.contains("@")) {
+			((UIInput) validar).setValid(false);
+			FacesMessage message = new FacesMessage("Email inválido");
+			context.addMessage(validar.getClientId(context), message);
+		}
 	}
 	
 }

@@ -11,13 +11,19 @@
 		<f:view>
 			<h:form>
 				Nome:
-				<h:inputText value="#{FuncionarioHandler.funcionario.nome}"/><br/>
+				<h:inputText id="nome" required="true" value="#{FuncionarioHandler.funcionario.nome}">
+					<f:validateLength minimum="5"/>
+				</h:inputText>
+				<h:message for="nome"/><br/>
 				Usuario:
 				<h:inputText value="#{FuncionarioHandler.funcionario.usuario}"/><br/>
 				Senha:
 				<h:inputSecret value="#{FuncionarioHandler.funcionario.senha}"/><br/>
 				Email:
-				<h:inputText value="#{FuncionarioHandler.funcionario.email}"/><br/>
+				<h:inputText id="email" required="true" value="#{FuncionarioHandler.funcionario.email}" validator="#{FuncionarioHandler.validaEmail}"/>
+				<h:message for="email"/><br/>
+				Idade:
+				<h:inputText value="#{FuncionarioHandler.funcionario.idade}"/><br/>
 				<h:commandButton value="Salvar" action="#{FuncionarioHandler.salva}"/>				
 			</h:form>
 			

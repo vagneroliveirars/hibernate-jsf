@@ -12,7 +12,10 @@
 			Bem vindo <h:outputText value="#{autenticador.login}"/>!
 			<h:form>
 				Nome:
-				<h:inputText value="#{FornecedorHandler.fornecedor.nome}"/><br/>
+				<h:inputText id="nome" required="true" value="#{FornecedorHandler.fornecedor.nome}">
+					<f:validateLength minimum="5"/>
+				</h:inputText>
+				<h:message for="nome"/><br/>
 				Descricao:
 				<h:inputTextarea value="#{FornecedorHandler.fornecedor.descricao}"/><br/>
 				<h:commandButton value="Salvar" action="#{FornecedorHandler.salva}"/>				
