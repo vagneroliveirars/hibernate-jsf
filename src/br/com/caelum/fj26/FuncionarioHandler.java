@@ -86,7 +86,7 @@ public class FuncionarioHandler {
 		String email = (String) valor;
 		if (!email.contains("@")) {
 			((UIInput) validar).setValid(false);
-			FacesMessage message = new FacesMessage("Email inválido");
+			FacesMessage message = new FacesMessage("Email invalido");
 			context.addMessage(validar.getClientId(context), message);
 		}
 	}
