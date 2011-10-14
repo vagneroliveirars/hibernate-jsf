@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
+
+<f:loadBundle basename="messages" var="msgs"/>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -9,14 +12,16 @@
 	</head>
 	<body>
 		<f:view>
-			Bem vindo <h:outputText value="#{autenticador.login}"/>!
+			<h:outputText value="#{msgs['bemvindo']}"/>
+			<h:outputText value="#{autenticador.login}"/>!
+			<br/>
 			<h:form>
-				Nome:
+				<h:outputText value="#{msgs['fornecedor-nome']}"/><br/>
 				<h:inputText id="nome" required="true" value="#{FornecedorHandler.fornecedor.nome}">
 					<f:validateLength minimum="5"/>
 				</h:inputText>
 				<h:message for="nome"/><br/>
-				Descricao:
+				<h:outputText value="#{msgs['fornecedor-descricao']}"/><br/>
 				<h:inputTextarea value="#{FornecedorHandler.fornecedor.descricao}"/><br/>
 				<h:commandButton value="Salvar" action="#{FornecedorHandler.salva}"/>				
 			</h:form>
