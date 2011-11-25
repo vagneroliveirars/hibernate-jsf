@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="t"  uri="http://myfaces.apache.org/tomahawk"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -28,7 +29,7 @@
 			</h:form>
 			
 			<h:form>
-				<h:dataTable rendered="#{not empty FuncionarioHandler.funcionarios}" border="1" var="f" value="#{FuncionarioHandler.funcionarios}">
+				<h:dataTable id="funcionariosTable" rendered="#{not empty FuncionarioHandler.funcionarios}" border="1" var="f" value="#{FuncionarioHandler.funcionarios}" rows="5">
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Id"/>
@@ -57,11 +58,10 @@
 						<f:facet name="header">
 							<h:outputText value="Alterar"/>
 						</f:facet>
-						<h:commandLink action="#{FuncionarioHandler.selecionaFuncionario}">
-							<h:outputText value="(alterar)"/>
-						</h:commandLink>
+						<h:commandButton value="Alterar" action="#{FuncionarioHandler.selecionaFuncionario}"/>
 					</h:column>
 				</h:dataTable>
+				<t:dataScroller for="funcionariosTable" paginator="true" paginatorMaxPages="7"/>
 			</h:form>		
 		</f:view>
 	</body>
