@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="t"  uri="http://myfaces.apache.org/tomahawk"%>
 
 <f:loadBundle basename="messages" var="msgs"/>
 
@@ -27,7 +28,7 @@
 			</h:form>
 			
 			<h:form>
-				<h:dataTable rendered="#{not empty FornecedorHandler.fornecedores}" border="1" var="f" value="#{FornecedorHandler.fornecedores}">
+				<h:dataTable id="fornecedoresTable" rendered="#{not empty FornecedorHandler.fornecedores}" border="1" var="f" value="#{FornecedorHandler.fornecedores}" rows="5">
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Id"/>
@@ -54,9 +55,10 @@
 							<h:outputText value="(alterar)"/>
 							<f:param id="editId" name="id" value="#{f.id}"/>
 						</h:commandLink>
-					</h:column>										
+					</h:column>					
 				</h:dataTable>
-			</h:form>	
+				<t:dataScroller for="fornecedoresTable" paginator="true" paginatorMaxPages="7"/>
+			</h:form>
 		</f:view>
 	</body>
 </html>
