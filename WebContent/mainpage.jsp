@@ -51,10 +51,10 @@
 						<f:facet name="header">
 							<h:outputText value="Alterar"/>
 						</f:facet>
-						<h:commandLink actionListener="#{FornecedorHandler.escolheFornecedor}">
+						<t:commandLink actionListener="#{FornecedorHandler.escolheFornecedor}">
 							<h:outputText value="(alterar)"/>
 							<f:param id="editId" name="id" value="#{f.id}"/>
-						</h:commandLink>
+						</t:commandLink>
 					</h:column>					
 				</h:dataTable>
 				<t:dataScroller for="fornecedoresTable" paginator="true" paginatorMaxPages="7"/>
