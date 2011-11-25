@@ -16,49 +16,57 @@
 			<h:outputText value="#{msgs['bemvindo']}"/>
 			<h:outputText value="#{autenticador.login}"/>!
 			<br/>
-			<h:form>
-				<h:outputText value="#{msgs['fornecedor-nome']}"/><br/>
-				<h:inputText id="nome" required="true" value="#{FornecedorHandler.fornecedor.nome}">
-					<f:validateLength minimum="5"/>
-				</h:inputText>
-				<h:message for="nome"/><br/>
-				<h:outputText value="#{msgs['fornecedor-descricao']}"/><br/>
-				<h:inputTextarea value="#{FornecedorHandler.fornecedor.descricao}"/><br/>
-				<h:commandButton value="Salvar" action="#{FornecedorHandler.salva}"/>				
-			</h:form>
+			<t:panelTabbedPane bgcolor="yellow" width="30%">
+				<t:panelTab label="Fornecedores">
+					<h:form>
+						<h:outputText value="#{msgs['fornecedor-nome']}"/><br/>
+						<h:inputText id="nome" required="true" value="#{FornecedorHandler.fornecedor.nome}">
+							<f:validateLength minimum="5"/>
+						</h:inputText>
+						<h:message for="nome"/><br/>
+						<h:outputText value="#{msgs['fornecedor-descricao']}"/><br/>
+						<h:inputTextarea value="#{FornecedorHandler.fornecedor.descricao}"/><br/>
+						<h:commandButton value="Salvar" action="#{FornecedorHandler.salva}"/>				
+					</h:form>
 			
-			<h:form>
-				<h:dataTable id="fornecedoresTable" rendered="#{not empty FornecedorHandler.fornecedores}" border="1" var="f" value="#{FornecedorHandler.fornecedores}" rows="5">
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Id"/>
-						</f:facet>
-						<h:outputText value="#{f.id}"/>
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Nome"/>
-						</f:facet>
-						<h:outputText value="#{f.nome}"/>
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Descricao"/>
-						</f:facet>
-						<h:outputText value="#{f.descricao}"/>
-					</h:column>	
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Alterar"/>
-						</f:facet>
-						<t:commandLink actionListener="#{FornecedorHandler.escolheFornecedor}">
-							<h:outputText value="(alterar)"/>
-							<f:param id="editId" name="id" value="#{f.id}"/>
-						</t:commandLink>
-					</h:column>					
-				</h:dataTable>
-				<t:dataScroller for="fornecedoresTable" paginator="true" paginatorMaxPages="7"/>
-			</h:form>
+					<h:form>
+						<h:dataTable id="fornecedoresTable" rendered="#{not empty FornecedorHandler.fornecedores}" border="1" var="f" value="#{FornecedorHandler.fornecedores}" rows="5">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Id"/>
+								</f:facet>
+								<h:outputText value="#{f.id}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Nome"/>
+								</f:facet>
+								<h:outputText value="#{f.nome}"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Descricao"/>
+								</f:facet>
+								<h:outputText value="#{f.descricao}"/>
+							</h:column>	
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Alterar"/>
+								</f:facet>
+								<t:commandLink actionListener="#{FornecedorHandler.escolheFornecedor}">
+									<h:outputText value="(alterar)"/>
+									<f:param id="editId" name="id" value="#{f.id}"/>
+								</t:commandLink>
+							</h:column>					
+						</h:dataTable>
+						<t:dataScroller for="fornecedoresTable" paginator="true" paginatorMaxPages="7"/>
+					</h:form>
+				</t:panelTab>
+				
+				<t:panelTab label="Contas a pagar">
+					painel das contas a pagar
+				</t:panelTab>
+			</t:panelTabbedPane>
 		</f:view>
 	</body>
 </html>
