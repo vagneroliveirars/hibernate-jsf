@@ -50,7 +50,7 @@ public class FuncionarioHandler {
 	}
 
 	/**
-	 * Salva um funcionario
+	 * Salva o Funcionario
 	 */
 	public void salva() {
 		System.out.println("Adicionando: " + funcionario.getNome());
