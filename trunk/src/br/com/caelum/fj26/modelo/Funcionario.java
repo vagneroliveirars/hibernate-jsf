@@ -1,5 +1,11 @@
 package br.com.caelum.fj26.modelo;
 
+/**
+ * Classe que representa uma instancia da entidade Funcionario
+ * 
+ * @author vagner
+ *
+ */
 public class Funcionario {
 
 	private Long id;

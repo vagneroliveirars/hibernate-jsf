@@ -19,14 +19,16 @@
 			<t:panelTabbedPane bgcolor="yellow" width="30%">
 				<t:panelTab label="Fornecedores">
 					<h:form>
-						<h:outputText value="#{msgs['fornecedor-nome']}"/><br/>
-						<h:inputText id="nome" required="true" value="#{FornecedorHandler.fornecedor.nome}">
-							<f:validateLength minimum="5"/>
-						</h:inputText>
-						<h:message for="nome"/><br/>
-						<h:outputText value="#{msgs['fornecedor-descricao']}"/><br/>
-						<h:inputTextarea value="#{FornecedorHandler.fornecedor.descricao}"/><br/>
-						<h:commandButton value="Salvar" action="#{FornecedorHandler.salva}"/>				
+						<h:panelGrid>
+							<h:outputText value="#{msgs['fornecedor-nome']}"/>
+							<h:inputText id="nome" required="true" value="#{FornecedorHandler.fornecedor.nome}">
+								<f:validateLength minimum="5"/>
+							</h:inputText>
+							<h:message for="nome"/>
+							<h:outputText value="#{msgs['fornecedor-descricao']}"/>
+							<h:inputTextarea value="#{FornecedorHandler.fornecedor.descricao}"/>
+							<h:commandButton value="Salvar" action="#{FornecedorHandler.salva}"/>
+						</h:panelGrid>				
 					</h:form>
 			
 					<h:form>
@@ -63,7 +65,7 @@
 					</h:form>
 				</t:panelTab>
 				
-				<t:panelTab label="Contas a pagar">
+				<t:panelTab label="Contas a pagar" rendered="#{not empty FornecedorHandler.fornecedores}">
 					painel das contas a pagar
 				</t:panelTab>
 			</t:panelTabbedPane>
