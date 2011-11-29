@@ -1,5 +1,11 @@
 package br.com.caelum.fj26;
 
+/**
+ * MBean que gerencia o login do usuario
+ * 
+ * @author vagner
+ *
+ */
 public class LoginHandler {
 
 	private String login;
@@ -22,6 +28,11 @@ public class LoginHandler {
 		this.senha = senha;
 	}
 	
+	/**
+	 * Valida o login e a senha do usuario
+	 * 
+	 * @return "success" se login com sucesso ou "failure" se login falhou
+	 */
 	public String logar() {
 		// codigo de teste, daos serao utilizados depois
 		if (login.equals("caelum") && senha.equals("123")) {

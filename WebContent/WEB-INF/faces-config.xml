@@ -21,6 +21,11 @@
     	<managed-bean-class>br.com.caelum.fj26.FuncionarioHandler</managed-bean-class>
     	<managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+    	<managed-bean-name>ContaPagarHandler</managed-bean-name>
+    	<managed-bean-class>br.com.caelum.fj26.ContaPagarHandler</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
     
     <navigation-rule>
     	<from-view-id>/olajsf.jsp</from-view-id>

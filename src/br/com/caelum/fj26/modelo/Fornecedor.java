@@ -1,5 +1,11 @@
 package br.com.caelum.fj26.modelo;
 
+/**
+ * Classe que representa uma instancia da entidade Fornecedor
+ * 
+ * @author vagner
+ *
+ */
 public class Fornecedor {
 
 	private Long id;
