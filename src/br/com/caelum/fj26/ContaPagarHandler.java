@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.component.html.HtmlSelectOneMenu;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
@@ -22,6 +21,7 @@ public class ContaPagarHandler {
 	private ContaPagar contaPagar = new ContaPagar();
 	private List<ContaPagar> contas = new ArrayList<ContaPagar>();
 	private HtmlSelectOneMenu fornecedorSelecionado;
+	private FornecedorHandler fornecedorHandler;	// injecao de dependencias 
 		
 	public ContaPagar getContaPagar() {
 		return contaPagar;
@@ -38,18 +38,28 @@ public class ContaPagarHandler {
 	public void setFornecedorSelecionado(HtmlSelectOneMenu fornecedorSelecionado) {
 		this.fornecedorSelecionado = fornecedorSelecionado;
 	}
+	
+	public FornecedorHandler getFornecedorHandler() {
+		return fornecedorHandler;
+	}
+
+	public void setFornecedorHandler(FornecedorHandler fornecedorHandler) {
+		this.fornecedorHandler = fornecedorHandler;
+	}
 
 	/**
 	 * Faz o lookup do bean FornecedorHandler
 	 * 
 	 * @return um objeto {@link FornecedorHandler}
 	 */
+	/* Comentado para usar injecao de dependencias ao inves do facesContext
 	private FornecedorHandler pegaFornecedorHandler() {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		FornecedorHandler handler = (FornecedorHandler) facesContext
 				.getApplication().getVariableResolver().resolveVariable(facesContext, "FornecedorHandler");
 		return handler;
 	}
+	*/
 	
 	/**
 	 * Gera um combobox de Fornecedores  
@@ -59,8 +69,14 @@ public class ContaPagarHandler {
 	public List<SelectItem> getFornecedoresParaComboBox() {
 		List<SelectItem> lista = new ArrayList<SelectItem>();
 		
+		/* Comentado para usar injecao de dependencias ao inves do facesContext
 		FornecedorHandler handler = pegaFornecedorHandler();
 		for (Fornecedor f : handler.getFornecedores()) {
+			lista.add(new SelectItem(f.getId().toString(), f.getNome()));
+		}
+		*/
+		
+		for (Fornecedor f : fornecedorHandler.getFornecedores()) {
 			lista.add(new SelectItem(f.getId().toString(), f.getNome()));
 		}
 		return lista;
@@ -76,7 +92,7 @@ public class ContaPagarHandler {
 		System.out.println("Pago: " + contaPagar.isPago());
 		
 		int id = Integer.parseInt(fornecedorSelecionado.getValue().toString());
-		Fornecedor f = pegaFornecedorHandler().getFornecedores().get(id - 1);
+		Fornecedor f = fornecedorHandler.getFornecedores().get(id - 1);
 		contaPagar.setFornecedor(f);
 		
 		System.out.println("Fornecedor: " + contaPagar.getFornecedor().getNome());

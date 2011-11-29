@@ -25,6 +25,10 @@
     	<managed-bean-name>ContaPagarHandler</managed-bean-name>
     	<managed-bean-class>br.com.caelum.fj26.ContaPagarHandler</managed-bean-class>
     	<managed-bean-scope>session</managed-bean-scope>
+    	<managed-property>
+    		<property-name>fornecedorHandler</property-name>
+    		<value>#{FornecedorHandler}</value>
+    	</managed-property>
     </managed-bean>
     
     <navigation-rule>
