@@ -66,7 +66,28 @@
 				</t:panelTab>
 				
 				<t:panelTab label="Contas a pagar" rendered="#{not empty FornecedorHandler.fornecedores}">
-					painel das contas a pagar
+					<h:form>
+						<h:panelGrid>
+							<h:outputText value="Criar conta para fornecedor:"/>
+							<h:selectOneMenu binding="#{ContaPagarHandler.fornecedorSelecionado}">
+								<f:selectItems value="#{ContaPagarHandler.fornecedoresParaComboBox}"/>
+							</h:selectOneMenu>
+							<h:outputText value="Descrição:"/>
+							<h:inputText value="#{ContaPagarHandler.contaPagar.descricao}"/>
+							<h:outputText value="Data de pagamento:"/>
+							<t:inputCalendar renderAsPopup="true" value="#{ContaPagarHandler.contaPagar.data.time}"/>
+							<h:outputText value="Valor:"/>
+							<h:inputText value="#{ContaPagarHandler.contaPagar.valor}"/>
+							<h:selectBooleanCheckbox value="#{ContaPagarHandler.contaPagar.pago}"/>
+							<h:outputText value="Pago"/>
+							<h:commandButton actionListener="#{ContaPagarHandler.salva}" value="Gravar"/>
+							<h:messages/>
+							
+							<t:dataList value="#{ContaPagarHandler.contas}" var="conta" layout="unorderedList">
+								<h:outputText value="#{conta.descricao}"/>
+							</t:dataList>
+						</h:panelGrid>
+					</h:form>
 				</t:panelTab>
 			</t:panelTabbedPane>
 		</f:view>

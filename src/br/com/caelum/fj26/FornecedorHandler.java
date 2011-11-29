@@ -42,7 +42,7 @@ public class FornecedorHandler {
 	}
 	
 	/**
-	 * Salva um fornecedor
+	 * Salva o Fornecedor
 	 */
 	public void salva() {
 		System.out.println("Adicionando: " + fornecedor.getNome());
