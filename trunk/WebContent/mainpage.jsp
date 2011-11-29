@@ -8,6 +8,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
+		<style type="text/css">
+			.fornecedores {
+				font-family: Verdana, Arial, Helvetica;
+				font-size: 12px;
+				border-collapse: collapse;
+				border: 1px solid black;
+				background-color: #fff;
+			}
+			.fornecedores thead {
+				background-color: #ddd;
+				border-bottom: 1px solid black;
+			}
+			.fornecedores td {
+				padding: 2px;
+			}
+			.linhaPar {
+				background-color: #fff;
+			}
+			.linhaImpar {
+				background-color: #fdff70;
+			}
+		</style>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Pagina Principal</title>
 	</head>
@@ -32,7 +54,7 @@
 					</h:form>
 			
 					<h:form>
-						<h:dataTable id="fornecedoresTable" rendered="#{not empty FornecedorHandler.fornecedores}" border="1" var="f" value="#{FornecedorHandler.fornecedores}" rows="5">
+						<h:dataTable styleClass="fornecedores" rowClasses="linhaPar, linhaImpar" id="fornecedoresTable" rendered="#{not empty FornecedorHandler.fornecedores}" border="1" var="f" value="#{FornecedorHandler.fornecedores}" rows="5">
 							<h:column>
 								<f:facet name="header">
 									<h:outputText value="Id"/>
@@ -73,7 +95,7 @@
 								<f:selectItems value="#{ContaPagarHandler.fornecedoresParaComboBox}"/>
 							</h:selectOneMenu>
 							<h:outputText value="Descrição:"/>
-							<h:inputText value="#{ContaPagarHandler.contaPagar.descricao}"/>
+							<h:inputText value="#{ContaPagarHandler.contaPagar.descricao}" required="true"/>
 							<h:outputText value="Data de pagamento:"/>
 							<t:inputCalendar renderAsPopup="true" value="#{ContaPagarHandler.contaPagar.data.time}"/>
 							<h:outputText value="Valor:"/>
