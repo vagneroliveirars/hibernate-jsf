@@ -3,19 +3,45 @@ package br.com.caelum.fj26.modelo;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 /**
  * Classe que representa uma instancia da entidade ContaPagar
  * 
  * @author vagner
- *
+ * 
  */
+@Entity
 public class ContaPagar {
 
+	@Id
+	@GeneratedValue
+	private Long id;
+	
 	private String descricao;
+	
 	private Double valor;
+	
+	@Temporal(TemporalType.DATE)
 	private Calendar data = new GregorianCalendar();
+	
+	@ManyToOne
 	private Fornecedor fornecedor;
+	
 	private boolean pago;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getDescricao() {
 		return descricao;

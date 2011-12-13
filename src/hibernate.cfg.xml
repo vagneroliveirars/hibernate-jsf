@@ -11,7 +11,6 @@ DTD//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
 		
-		<mapping class="br.com.caelum.fj26.modelo.Funcionario" />
 		<mapping class="br.com.caelum.fj26.modelo.Fornecedor"/>
 		<mapping class="br.com.caelum.fj26.modelo.ContaPagar"/>
 	</session-factory>
