@@ -8,6 +8,7 @@ import javax.faces.event.ActionEvent;
 import org.hibernate.Session;
 
 import br.com.caelum.fj26.dao.Dao;
+import br.com.caelum.fj26.dao.FornecedorDao;
 import br.com.caelum.fj26.modelo.Fornecedor;
 import br.com.caelum.fj26.util.HibernateUtil;
 
@@ -21,11 +22,6 @@ public class FornecedorHandler {
 
 	private Fornecedor fornecedor = new Fornecedor();
 
-	/**
-	 * Retorna um fornecedor
-	 * 
-	 * @return um objeto {@link Fornecedor}
-	 */
 	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
@@ -67,6 +63,19 @@ public class FornecedorHandler {
 		Dao<Fornecedor> dao = new Dao<Fornecedor>(session, Fornecedor.class);
 
 		this.fornecedor = dao.load(id);
+	}
+
+	/**
+	 * Devolve sugestoes de nomes de fornecedores
+	 * 
+	 * @param busca
+	 * @return uma lista de Strings que serao utilizadas para a criacao do
+	 *         combobox de sugestao
+	 */
+	public List<String> suggest(String busca) {
+		Session session = HibernateUtil.currentSession();
+		FornecedorDao dao = new FornecedorDao(session);
+		return dao.buscaPeloComecoDoNome(busca);
 	}
 
 }
