@@ -21,7 +21,7 @@ public class Dao<T> {
 
 	private Session session;
 
-	private Dao(Session session, Class persistentClass) {
+	public Dao(Session session, Class persistentClass) {
 		this.session = session;
 		this.persistentClass = persistentClass;
 	}
@@ -54,6 +54,11 @@ public class Dao<T> {
 	public void saveOrUpdate(T t) {
 		logger.info("Salvando ou atualizando " + t);
 		session.saveOrUpdate(t);
+	}
+	
+	public void merge(T t) {
+		logger.info("Merge " + t);
+		session.merge(t);
 	}
 
 }

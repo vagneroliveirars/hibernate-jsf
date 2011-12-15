@@ -7,8 +7,12 @@ import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
+import org.hibernate.Session;
+
+import br.com.caelum.fj26.dao.Dao;
 import br.com.caelum.fj26.modelo.ContaPagar;
 import br.com.caelum.fj26.modelo.Fornecedor;
+import br.com.caelum.fj26.util.HibernateUtil;
 
 /**
  * MBean que gerencia a entidade {@link ContaPagar} 
@@ -19,7 +23,6 @@ import br.com.caelum.fj26.modelo.Fornecedor;
 public class ContaPagarHandler {
 	
 	private ContaPagar contaPagar = new ContaPagar();
-	private List<ContaPagar> contas = new ArrayList<ContaPagar>();
 	private HtmlSelectOneMenu fornecedorSelecionado;
 	private FornecedorHandler fornecedorHandler;	// injecao de dependencias 
 		
@@ -28,7 +31,9 @@ public class ContaPagarHandler {
 	}
 	
 	public List<ContaPagar> getContas() {
-		return contas;
+		Session session = HibernateUtil.currentSession();
+		Dao<ContaPagar> dao = new Dao<ContaPagar>(session, ContaPagar.class);
+		return dao.list();
 	}
 	
 	public HtmlSelectOneMenu getFornecedorSelecionado() {
@@ -88,16 +93,17 @@ public class ContaPagarHandler {
 	 * @param event
 	 */
 	public void salva(ActionEvent event) {
-		System.out.println("Gravando a conta: " + contaPagar.getDescricao());
-		System.out.println("Pago: " + contaPagar.isPago());
+		Session session = HibernateUtil.currentSession();
+		Dao<Fornecedor> fornecedorDao = new Dao<Fornecedor>(session, Fornecedor.class);
 		
-		int id = Integer.parseInt(fornecedorSelecionado.getValue().toString());
-		Fornecedor f = fornecedorHandler.getFornecedores().get(id - 1);
+		// descobrindo o fornecedor		
+		long id = Long.parseLong(fornecedorSelecionado.getValue().toString());
+		Fornecedor f = fornecedorDao.load(id);
 		contaPagar.setFornecedor(f);
 		
-		System.out.println("Fornecedor: " + contaPagar.getFornecedor().getNome());
+		Dao<ContaPagar> dao = new Dao<ContaPagar>(session, ContaPagar.class);
+		dao.save(this.contaPagar);
 		
-		this.contas.add(contaPagar);
 		contaPagar = new ContaPagar();
 	}
 
