@@ -107,6 +107,8 @@
 							
 							<t:dataList value="#{ContaPagarHandler.contas}" var="conta" layout="unorderedList">
 								<h:outputText value="#{conta.descricao}"/>
+								<h:outputText value=" - "/>
+								<h:outputText value="#{conta.fornecedor.nome}"/>
 							</t:dataList>
 						</h:panelGrid>
 					</h:form>

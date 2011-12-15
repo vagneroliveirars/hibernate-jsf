@@ -25,8 +25,9 @@ public class HibernateUtil {
 	}
 	
 	public static Session openSession() {
+		logger.info("Abrindo uma nova sessao");
 		if (sessions.get() != null) {
-			logger.error("There was a session for this thread already!!");
+			logger.error("Ja havia uma sessao para esta thread!!");
 			// grave, alguem nao fechou uma sessao ja aberta
 		}
 		sessions.set(sessionFactory.openSession());
@@ -34,11 +35,13 @@ public class HibernateUtil {
 	}
 	
 	public static void closeCurrentSession() {
+		logger.info("Fechando a sessao corrente");
 		sessions.get().close();
 		sessions.set(null);
 	}
 	
 	public static Session currentSession() {
+		logger.info("Retornando a sessao corrente");
 		return sessions.get();
 	}
 	

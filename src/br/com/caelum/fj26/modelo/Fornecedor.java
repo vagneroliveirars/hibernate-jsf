@@ -1,8 +1,11 @@
 package br.com.caelum.fj26.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 /**
  * Classe que representa uma instancia da entidade Fornecedor
@@ -14,7 +17,9 @@ import javax.persistence.Id;
 public class Fornecedor {
 
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name = "FORNECEDOR_ID", sequenceName = "FORNECEDOR_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FORNECEDOR_ID")
+	@Column(name = "ID")
 	private Long id;
 	
 	private String nome, descricao;
