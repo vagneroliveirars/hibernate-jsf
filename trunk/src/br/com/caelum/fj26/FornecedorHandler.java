@@ -66,7 +66,8 @@ public class FornecedorHandler {
 	}
 
 	/**
-	 * Devolve sugestoes de nomes de fornecedores
+	 * Devolve sugestoes de nomes de fornecedores, de acordo com o que
+	 * comecou a ser digitado
 	 * 
 	 * @param busca
 	 * @return uma lista de Strings que serao utilizadas para a criacao do
