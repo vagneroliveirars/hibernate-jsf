@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
@@ -33,6 +36,22 @@ public class ChartMaker {
 		return grafico;
 	}
 	
+	/**
+	 * Gera um grafico a partir de um dataset e exibe no desktop usando Swing
+	 * 
+	 * @param ds O dataset com os dados necessarios para gerar o grafico
+	 * @throws IOException
+	 */
+	public static void exibeChart(DefaultPieDataset ds) throws IOException {
+		JFreeChart grafico = ChartFactory.createPieChart3D("Contas por fornecedor", ds, true, false, false);
+		grafico.getPlot().setForegroundAlpha(0.4f);
+		
+		JFrame f = new JFrame("Grafico");
+		f.add(new ChartPanel(grafico));
+		f.setSize(640, 480);
+		f.setVisible(true);
+	}
+	
 	public static void main(String[] args) throws IOException {
 		/*
 		 * Recupera os dados do DAO e gera o Dataset utilizado para gerar o grafico
@@ -49,6 +68,8 @@ public class ChartMaker {
 		
 		JFreeChart grafico = ChartMaker.geraChart(ds);
 		ChartUtilities.saveChartAsJPEG(new File("image.jpg"), grafico, 640, 480);
+		
+		exibeChart(ds);
 	}
 	
 }
