@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
-<%@ taglib prefix="t"  uri="http://myfaces.apache.org/tomahawk"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="t" uri="http://myfaces.apache.org/tomahawk"%>
 
 <f:loadBundle basename="messages" var="msgs"/>
 
@@ -84,6 +84,7 @@
 							</h:column>					
 						</h:dataTable>
 						<t:dataScroller for="fornecedoresTable" paginator="true" paginatorMaxPages="7"/>
+						<h:graphicImage id="graficoContasPorFornecedor" alt="Contas por fornecedor" url="chart"/>
 					</h:form>
 				</t:panelTab>
 				

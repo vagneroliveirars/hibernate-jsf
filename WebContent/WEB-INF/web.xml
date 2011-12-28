@@ -18,9 +18,19 @@
 	    <load-on-startup>1</load-on-startup>
   </servlet>
   
+  <servlet>
+  		<servlet-name>chart</servlet-name>
+  		<servlet-class>br.com.caelum.fj26.util.ChartServlet</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
 	    <servlet-name>Faces Servlet</servlet-name>
 	    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  		<servlet-name>chart</servlet-name>
+  		<url-pattern>/chart</url-pattern>
   </servlet-mapping>
   
   <filter>
