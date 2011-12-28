@@ -54,7 +54,7 @@ public class ChartMaker {
 	
 	public static void main(String[] args) throws IOException {
 		/*
-		 * Recupera os dados do DAO e gera o Dataset utilizado para gerar o grafico
+		 *  Recupera os dados do DAO e gera o dataset utilizado para gerar o grafico
 		 */
 		ContaPagarDao cpd = new ContaPagarDao(HibernateUtil.openSession());
 		

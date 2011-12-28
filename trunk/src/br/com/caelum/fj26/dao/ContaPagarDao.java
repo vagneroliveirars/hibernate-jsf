@@ -25,7 +25,6 @@ public class ContaPagarDao extends Dao<ContaPagar> {
 	/**
 	 * Retorna o quanto esta sendo gasto por fornecedor
 	 * 
-	 * @param qtd
 	 * @return lista de array de objetos
 	 */
 	@SuppressWarnings("unchecked")
